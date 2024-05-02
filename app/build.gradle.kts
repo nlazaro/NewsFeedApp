@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -15,6 +17,18 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        //Loads value from apikeys.properties file
+        val apiKeyFile = project.rootProject.file("apikeys.properties")
+        val properties = Properties()
+        properties.load(apiKeyFile.inputStream())
+        // return empty key if empty file
+        val nyTimesApiKey = properties.getProperty("NYTIMES_API_KEY") ?: ""
+        buildConfigField(
+            type = "String",
+            name = "NYTIMES_API_KEY",
+            value = nyTimesApiKey
+        )
     }
 
     buildTypes {
@@ -35,6 +49,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -51,4 +66,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    // third party libraries
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.glide)
 }
