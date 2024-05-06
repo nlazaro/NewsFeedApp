@@ -3,4 +3,5 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Books</string>
     <string name="title_notifications">Search</string>
+    <string name="first_page">First page article in %s</string>
 </resources>
