@@ -15,10 +15,13 @@ import com.example.newsfeedapp.network.CallbackResponse
 
 class BooksFragment : Fragment(), OnListFragmentListener {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?):
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?):
             View?{
         val view = inflater.inflate(R.layout.best_seller_books_list, container, false)
-        val recyclerView = view.findViewById<View>(R.id.rvList) as RecyclerView
+        val recyclerView = view.findViewById<View>(R.id.rvBooksList) as RecyclerView
         val context = view.context
         recyclerView.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
         updateAdapter(recyclerView)

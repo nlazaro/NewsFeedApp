@@ -53,6 +53,10 @@ class APIClient {
         }
         )}
 
+    fun getArticlesByInput(articlesListResponse: CallbackResponse<List<Article>>, query: String){
+        getArticlesByInput(articlesListResponse, query, 0)
+    }
+
     // Get articles by specific input
     fun getArticlesByInput(articlesListResponse: CallbackResponse<List<Article>>, query: String?, pageNumber: Int){
         val current = apiService.getArticles(
